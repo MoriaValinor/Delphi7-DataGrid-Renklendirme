@@ -39,9 +39,9 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-ComboBox1.Items.Add('›SME G÷RE ARA');
-ComboBox1.Items.Add('SOY›SME G÷RE ARA');
-ComboBox1.Items.Add('MEMLEKETE G÷RE ARA');
+ComboBox1.Items.Add('√ùSME G√ñRE ARA');
+ComboBox1.Items.Add('SOY√ùSME G√ñRE ARA');
+ComboBox1.Items.Add('MEMLEKETE G√ñRE ARA');
 
 end;
 
@@ -51,7 +51,7 @@ degisken:integer;
 begin
 degisken:=ComboBox1.ItemIndex;
 if(degisken=-1)then BEGIN
-ShowMessage('L‹TFEN NEYE G÷RE ARAMA YAPACA–INIZI SE«›N›Z...');
+ShowMessage('L√úTFEN NEYE G√ñRE ARAMA YAPACA√êINIZI SE√á√ùN√ùZ...');
 Exit;
 END;
 
@@ -85,23 +85,26 @@ END;
 procedure TForm1.DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-{
+{   ///    MOD ALMAYA G√ñRE RENKLENDƒ∞RME ////
 if(ADOTable1.RecNo mod 2=1)then begin
 DBGrid1.Canvas.Brush.Color :=clgreen
 end else
 DBGrid1.Canvas.Brush.Color:=clskyblue;
 }
-{
+
+
+{  ///   Cƒ∞NSƒ∞YETE G√ñRE RENKLENDƒ∞RME /////
 if(ADOTable1.FieldByName('CINSIYET').AsVariant)='BAYAN'then begin
 DBGrid1.Canvas.Brush.Color :=clgreen
 END ELSE
 DBGrid1.Canvas.Brush.Color :=clYELLOW;
 }
-if(ADOTable1.FieldByName('GEL›R').AsCurrency <3550)THEN
+  ///   GELƒ∞RE G√ñRE RENKLENDƒ∞RME
+if(ADOTable1.FieldByName('GEL√ùR').AsCurrency <3550)THEN
 DBGrid1.Canvas.Brush.Color :=clYELLOW
 ELSE
-IF  (ADOTable1.FieldByName('GEL›R').AsCurrency > 3550)AND
- (ADOTable1.FieldByName('GEL›R').AsCurrency <= 4550) then begin
+IF  (ADOTable1.FieldByName('GEL√ùR').AsCurrency > 3550)AND
+ (ADOTable1.FieldByName('GEL√ùR').AsCurrency <= 4550) then begin
 DBGrid1.Canvas.Brush.Color :=CLGRAY
 end else
 DBGrid1.Canvas.Brush.Color :=CLLIME;
